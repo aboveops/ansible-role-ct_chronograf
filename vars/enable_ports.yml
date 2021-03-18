@@ -1,0 +1,4 @@
+---
+ct_chronograf_ct_ports:
+  - "{{ ct_chronograf_bind_addr }}:{{ ct_chronograf_bind_port }}:{{ ct_chronograf_bind_ct_port }}"
+...

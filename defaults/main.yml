@@ -1,0 +1,37 @@
+---
+ct_chronograf_task_prefix: "=== CHRONOGRAF CT ==="
+# ######################################################
+# Common settings
+# ######################################################
+ct_chronograf_enable_ports: true
+ct_chronograf_persist_data: true
+# ######################################################
+# Path settings
+# ######################################################
+ct_chronograf_path_base: "/srv/ct_chronograf"
+ct_chronograf_path_data: "{{ ct_chronograf_path_base }}/{{ ct_chronograf_ct_name }}"
+# Path to data directory inside container
+ct_chronograf_ct_path_data: "/var/lib/chronograf"
+# ######################################################
+# Network settings
+# ######################################################
+ct_chronograf_bind_addr: "127.0.0.1"
+ct_chronograf_bind_port: "8888"
+ct_chronograf_bind_ct_port: "8888"
+# ######################################################
+# Container settings
+# ######################################################
+ct_chronograf_ct_name: "chronograf"
+ct_chronograf_ct_image: "chronograf"
+ct_chronograf_ct_version: "latest"
+ct_chronograf_ct_restart_policy: "always"
+ct_chronograf_ct_state: "started"
+ct_chronograf_ct_restart: "no"
+ct_chronograf_ct_pull: "no"
+ct_chronograf_ct_recreate: "no"
+ct_chronograf_ct_ports: []
+ct_chronograf_ct_volumes: []
+ct_chronograf_ct_command: []
+# ct_chronograf_ct_command:
+#   - "--influxdb-url=http://influxdb:8086"
+...

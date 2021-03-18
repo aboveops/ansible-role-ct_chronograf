@@ -1,0 +1,27 @@
+---
+- name: "{{ ct_chronograf_task_prefix }} Enable ports?"
+  include_vars: enable_ports.yml
+  when: ct_chronograf_enable_ports|bool
+- name: "{{ ct_chronograf_task_prefix }} Persist data?"
+  include_vars: persist_data.yml
+  when: ct_chronograf_enable_ports|bool
+- name: "{{ ct_chronograf_task_prefix }} Create data directory"
+  file:
+    path: "{{ ct_chronograf_path_data }}"
+    state: directory
+    recurse: true
+    mode: '0755'
+- name: "{{ ct_chronograf_task_prefix }} Create container"
+  docker_container:
+    container_default_behavior: "no_defaults"
+    name: "{{ ct_chronograf_ct_name }}"
+    image: "{{ ct_chronograf_ct_image }}:{{ ct_chronograf_ct_version }}"
+    restart_policy: "{{ ct_chronograf_ct_restart_policy }}"
+    state: "{{ ct_chronograf_ct_state }}"
+    restart: "{{ ct_chronograf_ct_restart }}"
+    pull: "{{ ct_chronograf_ct_pull }}"
+    recreate: "{{ ct_chronograf_ct_recreate }}"
+    ports: "{{ ct_chronograf_ct_ports }}"
+    volumes: "{{ ct_chronograf_ct_volumes }}"
+    command: "{{ ct_chronograf_ct_command }}"
+...

@@ -1,0 +1,4 @@
+---
+ct_chronograf_ct_volumes:
+  - "{{ ct_chronograf_path_data }}:{{ ct_chronograf_ct_path_data }}"
+...
